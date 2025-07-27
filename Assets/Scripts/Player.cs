@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     private Transform cam;
     private Transform gun;
 
+    public GameObject bullet;
+    public Transform muzzle;
+
 
     void Start()
     {
@@ -58,5 +61,15 @@ public class Player : MonoBehaviour
         cam.Rotate(Vector3.right * mouseY);
         gun.Rotate(Vector3.right * mouseY);
 
+        // cria o tiro:
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        Instantiate(bullet, muzzle.position, muzzle.rotation, null); // cria o tiro na posição do muzzle
     }
 }
